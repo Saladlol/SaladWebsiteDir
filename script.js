@@ -351,3 +351,114 @@ photoSets.forEach((set) => {
     });
 
 });
+
+// work filters
+
+const filterButtons = document.querySelectorAll(".filter-button");
+
+let activeFilters = [];
+
+filterButtons.forEach((button) => {
+
+    button.addEventListener("click", () => {
+
+        const filter = button.dataset.filter;
+
+
+        // all button clears every filter
+
+        if (filter === "all") {
+
+            activeFilters = [];
+
+            filterButtons.forEach((button) => {
+                button.classList.remove("active");
+            });
+
+            button.classList.add("active");
+
+        }
+
+
+        // toggle individual filters
+
+        else {
+
+            // remove all button from active state
+
+            const allButton = document.querySelector(
+                '.filter-button[data-filter="all"]'
+            );
+
+            allButton.classList.remove("active");
+
+
+            if (activeFilters.includes(filter)) {
+
+                activeFilters = activeFilters.filter(
+                    (activeFilter) => activeFilter !== filter
+                );
+
+                button.classList.remove("active");
+
+            }
+
+            else {
+
+                activeFilters.push(filter);
+
+                button.classList.add("active");
+
+            }
+
+
+            // if no filters are selected, activate all
+
+            if (activeFilters.length === 0) {
+                allButton.classList.add("active");
+            }
+
+        }
+
+
+        // filter gallery items
+
+        galleryItems.forEach((item) => {
+
+            const tags = item.dataset.tags
+                ? item.dataset.tags
+                    .split(",")
+                    .map((tag) => tag.trim())
+                : [];
+
+
+            // show everything when all is selected
+
+            if (activeFilters.length === 0) {
+
+                item.classList.remove("hidden");
+
+                return;
+            }
+
+
+            // item must have every selected tag
+
+            const matches = activeFilters.every(
+                (filter) => tags.includes(filter)
+            );
+
+
+            if (matches) {
+                item.classList.remove("hidden");
+            }
+
+            else {
+                item.classList.add("hidden");
+            }
+
+        });
+
+    });
+
+});
