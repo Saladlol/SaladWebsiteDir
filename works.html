@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>TheSaladAppears | Work</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <h1>TheSaladAppears</h1>
+
+            <div>
+                <a href="home.html">Home</a>
+                <a href="works.html">Work</a>
+                <a href="home.html#about">About</a>
+                <a href="home.html#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <main class="work-page">
+
+        <section>
+
+            <p class="small-text">PORTFOLIO</p>
+
+            <h2>My Work</h2>
+
+            <div class="gallery">
+
+
+                <!-- template video -->
+
+                <div
+                    class="gallery-item"
+                    data-type="video"
+                    data-title="Short stylised Stun animation showcase"
+                    data-description="An animation I created to showcase the stun animation for a character."
+                    data-src="media\Videos\Roaring Salad.mp4"
+                >
+
+                    <video
+                        src="media\Videos\Roaring Salad.mp4"
+                        muted
+                        loop
+                        playsinline
+                        preload="metadata"
+                    ></video>
+
+                    <div class="gallery-title">
+                        <span>Stylised stun animation showcase</span>
+                        <span>VIDEO</span>
+                    </div>
+
+                </div>
+
+
+                <!-- example Gif -->
+
+                <!-- <div
+                    class="gallery-item"
+                    data-type="gif"
+                    data-title="Game UI Animation"
+                    data-description="A UI animation created for a game."
+                    data-src="media/game-ui.gif"
+                >
+
+                    <img
+                        src="media/game-ui.gif"
+                        alt="Game UI animation"
+                    >
+
+                    <div class="gallery-title">
+                        <span>Game UI Animation</span>
+                        <span>GIF</span>
+                    </div>
+
+                </div> -->
+
+
+                <!-- example image -->
+
+                <div
+                    class="gallery-item"
+                    data-type="image"
+                    data-title="Pixel art 'Temmie' character"
+                    data-description="A pixel art version of my character taking the appearance of 'Temmie' from undertale."
+                    data-src="media/Images/SaladTemmie.png"
+                >
+
+                    <img
+                        src="media/Images/SaladTemmie.png"
+                        alt="Salad temmie"
+                    >
+
+                    <div class="gallery-title">
+                        <span>Salad temmie pixel art</span>
+                        <span>IMAGE</span>
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="gallery-item photo-set"
+                    data-type="photo-set"
+                    data-title="Renders of my character in backrooms scenes"
+                    data-description="Here's a couple renders of my character (Drawings by ShiroMiso https://shiromiso.carrd.co)"
+                    data-images='[
+                        "media/Images/LarpingRoomsRenders/BigRoom.png",
+                        "media/Images/LarpingRoomsRenders/Hallway.png",
+                        "media/Images/LarpingRoomsRenders/MovieRoom.png",
+                        "media/Images/LarpingRoomsRenders/Poolroom.png"
+                    ]'
+                >
+
+                    <div class="set-preview">
+                        <img
+                            src="media/Images/LarpingRoomsRenders/BigRoom.png"
+                            alt="Room Building"
+                        >
+                    </div>
+
+                    <div class="gallery-title">
+                        <span>Blender building and rendering</span>
+                        <span>4 IMAGES</span>
+                    </div>
+
+                </div>
+
+               
+
+            </div>
+
+        </section>
+
+    </main>
+
+  <!-- for the preview window -->
+
+ <div class="lightbox" id="lightbox">
+
+    <button
+        class="lightbox-close"
+        id="lightboxClose"
+        aria-label="Close"
+    >
+        ×
+    </button>
+
+    <button
+        class="lightbox-arrow lightbox-prev"
+        id="lightboxPrev"
+        aria-label="Previous image"
+    >
+        ←
+    </button>
+
+    <div class="lightbox-inner">
+
+        <div
+            class="lightbox-content"
+            id="lightboxContent"
+        ></div>
+
+        <div
+            class="lightbox-description"
+            id="lightboxDescription"
+        ></div>
+
+    </div>
+
+    <button
+        class="lightbox-arrow lightbox-next"
+        id="lightboxNext"
+        aria-label="Next image"
+    >
+        →
+    </button>
+
+    <div
+        class="lightbox-counter"
+        id="lightboxCounter"
+    >
+        1 / 1
+    </div>
+
+</div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
