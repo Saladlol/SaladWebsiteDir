@@ -17,7 +17,9 @@
 <body>
 
     <header>
+
         <nav>
+
             <h1>TheSaladAppears</h1>
 
             <div>
@@ -26,7 +28,9 @@
                 <a href="home.html#about">About</a>
                 <a href="home.html#contact">Contact</a>
             </div>
+
         </nav>
+
     </header>
 
 
@@ -38,33 +42,96 @@
 
             <h2>My Work</h2>
 
+
+            <!-- work filters -->
+
             <div class="work-filters">
-                <button class="filter-button active" data-filter="all">All</button>
-                <button class="filter-button" data-filter="animation">Animation</button>
-                <button class="filter-button" data-filter="game-dev">Game Dev</button>
-                <button class="filter-button" data-filter="music">Music</button>
-                <button class="filter-button" data-filter="build">Building</button>
-                <button class="filter-button" data-filter="art">Art</button>
-                <button class="filter-button" data-filter="video-editing">Video Editing</button> 
-                <button class="filter-button" data-filter="rendering">Rendering</button>
+
+                <button
+                    type="button"
+                    class="filter-button active"
+                    data-filter="all"
+                >
+                    All
+                </button>
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="animation"
+                >
+                    Animation
+                </button>
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="game-dev"
+                >
+                    Game Dev
+                </button>
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="music"
+                >
+                    Music
+                </button>
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="build"
+                >
+                    Building
+                </button>
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="art"
+                >
+                    Art
+                </button>
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="video-editing"
+                >
+                    Video Editing
+                </button>
+
+                <button
+                    type="button"
+                    class="filter-button"
+                    data-filter="rendering"
+                >
+                    Rendering
+                </button>
+
             </div>
+
+
+            <!-- gallery -->
 
             <div class="gallery">
 
 
-                <!-- template video -->
+                <!-- video -->
 
                 <div
                     class="gallery-item"
                     data-type="video"
-                    data-title="Short stylised Stun animation showcase"
+                    data-title="Short stylised stun animation showcase"
                     data-description="An animation I created to showcase the stun animation for a character."
-                    data-src="media\Videos\Roaring Salad.mp4"
+                    data-src="media/Videos/Roaring Salad.mp4"
                     data-tags="animation,video-editing"
                 >
 
                     <video
-                        src="media\Videos\Roaring Salad.mp4"
+                        src="media/Videos/Roaring Salad.mp4"
                         muted
                         loop
                         playsinline
@@ -72,20 +139,31 @@
                     ></video>
 
                     <div class="gallery-title">
-                        <span>Stylised stun animation showcase</span>
-                        <span>VIDEO</span>
+
+                        <span>
+                            Stylised stun animation showcase
+                        </span>
+
+                        <span>
+                            VIDEO
+                        </span>
+
                     </div>
 
                 </div>
 
-               <div
-                    class="gallery-item"
+
+                <!-- music -->
+
+                <div
+                    class="gallery-item music-item"
                     data-type="audio"
                     data-title="Circus: Salad remix"
-                    data-description="This is emote music made as a remix of 'Circus (Sigma Rizz Mode Final Arc Ultra Edition) by silvagunner'."
-                    data-src="media/music/my-song.mp3"
-                    data-tags="music,game-dev"
+                    data-description="This is a remix of 'Circus (Sigma Rizz Mode Final Arc Ultra Edition)' by silvagunner."
+                    data-src="media/music/circusRemixSalad.ogg"
+                    data-tags="music"
                 >
+
                     <div class="music-preview">
 
                         <div class="music-play">
@@ -93,10 +171,15 @@
                         </div>
 
                         <div class="music-info">
-                            <span class="music-name">my song</span>
-                            <span class="music-description">
-                                Remix of 'Circus (Sigma Rizz Mode Final Arc Ultra Edition)' by silvagunner.
+
+                            <span class="music-name">
+                                Circus: Salad remix
                             </span>
+
+                            <span class="music-description">
+                                remix
+                            </span>
+
                         </div>
 
                         <span class="music-type">
@@ -104,61 +187,48 @@
                         </span>
 
                     </div>
+
                 </div>
 
 
-                <!-- example Gif -->
-
-                <!-- <div
-                    class="gallery-item"
-                    data-type="gif"
-                    data-title="Game UI Animation"
-                    data-description="A UI animation created for a game."
-                    data-src="media/game-ui.gif"
-                >
-
-                    <img
-                        src="media/game-ui.gif"
-                        alt="Game UI animation"
-                    >
-
-                    <div class="gallery-title">
-                        <span>Game UI Animation</span>
-                        <span>GIF</span>
-                    </div>
-
-                </div> -->
-
-
-                <!-- example image -->
+                <!-- image -->
 
                 <div
                     class="gallery-item"
                     data-type="image"
                     data-title="Pixel art 'Temmie' character"
-                    data-description="A pixel art version of my character taking the appearance of 'Temmie' from undertale."
+                    data-description="A pixel art version of my character taking the appearance of 'Temmie' from Undertale."
                     data-src="media/Images/SaladTemmie.png"
                     data-tags="art"
                 >
 
                     <img
                         src="media/Images/SaladTemmie.png"
-                        alt="Salad temmie"
+                        alt="Salad Temmie pixel art"
                     >
 
                     <div class="gallery-title">
-                        <span>Salad temmie pixel art</span>
-                        <span>IMAGE</span>
+
+                        <span>
+                            Salad Temmie pixel art
+                        </span>
+
+                        <span>
+                            IMAGE
+                        </span>
+
                     </div>
 
                 </div>
 
 
+                <!-- photo set -->
+
                 <div
                     class="gallery-item photo-set"
                     data-type="photo-set"
                     data-title="Renders of my character in backrooms scenes"
-                    data-description="Here's a couple renders of my character (Drawings by ShiroMiso https://shiromiso.carrd.co)"
+                    data-description="Here's a couple renders of my character. Drawings by ShiroMiso."
                     data-images='[
                         "media/Images/LarpingRoomsRenders/BigRoom.png",
                         "media/Images/LarpingRoomsRenders/Hallway.png",
@@ -169,20 +239,28 @@
                 >
 
                     <div class="set-preview">
+
                         <img
                             src="media/Images/LarpingRoomsRenders/BigRoom.png"
-                            alt="Room Building"
+                            alt="Backrooms room render"
                         >
+
                     </div>
 
                     <div class="gallery-title">
-                        <span>Blender building and rendering</span>
-                        <span>4 IMAGES</span>
+
+                        <span>
+                            Blender building and rendering
+                        </span>
+
+                        <span>
+                            4 IMAGES
+                        </span>
+
                     </div>
 
                 </div>
 
-               
 
             </div>
 
@@ -190,59 +268,72 @@
 
     </main>
 
-  <!-- for the preview window -->
 
- <div class="lightbox" id="lightbox">
-
-    <button
-        class="lightbox-close"
-        id="lightboxClose"
-        aria-label="Close"
-    >
-        ×
-    </button>
-
-    <button
-        class="lightbox-arrow lightbox-prev"
-        id="lightboxPrev"
-        aria-label="Previous image"
-    >
-        ←
-    </button>
-
-    <div class="lightbox-inner">
-
-        <div
-            class="lightbox-content"
-            id="lightboxContent"
-        ></div>
-
-        <div
-            class="lightbox-description"
-            id="lightboxDescription"
-        ></div>
-
-    </div>
-
-    <button
-        class="lightbox-arrow lightbox-next"
-        id="lightboxNext"
-        aria-label="Next image"
-    >
-        →
-    </button>
+    <!-- lightbox -->
 
     <div
-        class="lightbox-counter"
-        id="lightboxCounter"
+        class="lightbox"
+        id="lightbox"
     >
-        1 / 1
-    </div>
 
-</div>
+        <button
+            type="button"
+            class="lightbox-close"
+            id="lightboxClose"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+
+        <button
+            type="button"
+            class="lightbox-arrow lightbox-prev"
+            id="lightboxPrev"
+            aria-label="Previous image"
+        >
+            ←
+        </button>
+
+
+        <div class="lightbox-inner">
+
+            <div
+                class="lightbox-content"
+                id="lightboxContent"
+            ></div>
+
+
+            <div
+                class="lightbox-description"
+                id="lightboxDescription"
+            ></div>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="lightbox-arrow lightbox-next"
+            id="lightboxNext"
+            aria-label="Next image"
+        >
+            →
+        </button>
+
+
+        <div
+            class="lightbox-counter"
+            id="lightboxCounter"
+        >
+            1 / 1
+        </div>
+
+    </div>
 
 
     <script src="script.js"></script>
 
 </body>
+
 </html>

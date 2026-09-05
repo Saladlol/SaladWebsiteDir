@@ -3,6 +3,7 @@
     src: url("fonts/pixel-comic-sans.ttf") format("truetype");
 }
 
+
 /* reset */
 
 * {
@@ -20,6 +21,7 @@ body {
     background: #111;
     color: #fff;
     line-height: 1.6;
+    animation: fadeIn 1s ease-out;
 }
 
 a {
@@ -86,6 +88,7 @@ section {
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
+    animation: fadeUp 0.8s ease-out 0.2s backwards;
 }
 
 .hero h2 {
@@ -113,6 +116,10 @@ section {
 .button {
     padding: 12px 20px;
     border: 1px solid #fff;
+    display: inline-block;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
 }
 
 .button:hover {
@@ -208,35 +215,6 @@ footer {
 }
 
 
-/* mobile layout */
-
-@media (max-width: 700px) {
-
-    nav {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    section {
-        padding: 80px 0;
-    }
-
-    .project {
-        grid-template-columns: 1fr;
-        gap: 25px;
-    }
-
-    section > h2 {
-        font-size: 40px;
-    }
-
-    #about h2,
-    #contact h2 {
-        font-size: 40px;
-    }
-}
-
-
 /* start page */
 
 .start-page {
@@ -268,28 +246,17 @@ footer {
 
 /* page animations */
 
-body {
-    animation: fadeIn 1s ease-out;
-}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
 
-.hero {
-    animation: fadeUp 0.8s ease-out 0.2s backwards;
-}
-
-#work {
-    animation: fadeUp 0.8s ease-out 0.4s backwards;
-}
-
-#about {
-    animation: fadeUp 0.8s ease-out 0.6s backwards;
-}
-
-#contact {
-    animation: fadeUp 0.8s ease-out 0.8s backwards;
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeUp {
-
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -299,13 +266,17 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-
 }
+
+
+/* scroll reveal */
 
 .reveal {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease;
 }
 
 .reveal.visible {
@@ -326,6 +297,7 @@ body {
     font-size: 60px;
     margin: 10px 0 60px;
 }
+
 
 /* work filters */
 
@@ -368,6 +340,7 @@ body {
     display: none;
 }
 
+
 /* gallery */
 
 .gallery {
@@ -391,9 +364,6 @@ body {
         transform 0.3s ease,
         height 0.3s ease;
 }
-
-
-/* resize on hover */
 
 .gallery-item:hover {
     transform: scale(1.025);
@@ -448,9 +418,11 @@ body {
     color: #aaa;
 }
 
+
 /* music creation */
 
 .music-preview {
+    position: relative;
     width: 100%;
     height: 100%;
     display: flex;
@@ -458,7 +430,7 @@ body {
     gap: 25px;
     padding: 30px;
     background: #181818;
-    transition: background 0.3s ease;
+    z-index: 1;
 }
 
 .music-item:hover .music-preview {
@@ -487,13 +459,14 @@ body {
 }
 
 .music-info {
+    min-width: 0;
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
 
 .music-name {
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .music-description {
@@ -503,14 +476,28 @@ body {
 
 .music-type {
     margin-left: auto;
+    flex-shrink: 0;
     color: #888;
     font-size: 12px;
     letter-spacing: 2px;
 }
 
-.lightbox-content audio {
-    width: min(700px, 80vw);
+
+/* photo sets */
+
+.set-preview {
+    width: 100%;
+    height: 100%;
 }
+
+.set-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.5s ease;
+}
+
 
 /* lightbox */
 
@@ -530,12 +517,58 @@ body {
         visibility 0.3s ease;
 }
 
-
-/* open lightbox */
-
 .lightbox.active {
     opacity: 1;
     visibility: visible;
+}
+
+
+/* lightbox inner */
+
+.lightbox-inner {
+    max-width: 95vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* lightbox content */
+
+.lightbox-content {
+    max-width: 95vw;
+    max-height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lightbox-content img,
+.lightbox-content video {
+    max-width: 95vw;
+    max-height: 75vh;
+    object-fit: contain;
+}
+
+
+/* lightbox audio */
+
+.lightbox-content audio {
+    width: min(700px, 80vw);
+}
+
+
+/* lightbox description */
+
+.lightbox-description {
+    max-width: 800px;
+    margin-top: 20px;
+    color: #aaa;
+    font-size: 16px;
+    text-align: center;
+    line-height: 1.6;
 }
 
 
@@ -554,106 +587,12 @@ body {
 }
 
 
-/* lightbox content */
+/* lightbox arrows */
 
-.lightbox-content {
-    max-width: 95vw;
-    max-height: 90vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.lightbox-arrow,
+.lightbox-counter {
+    display: none;
 }
-
-.lightbox-content img,
-.lightbox-content video {
-    max-width: 95vw;
-    max-height: 85vh;
-    object-fit: contain;
-}
-
-
-/* everything mobile-sided */
-
-@media (max-width: 700px) {
-
-    .work-page h2 {
-        font-size: 40px;
-    }
-
-    .gallery-item {
-        height: 180px;
-    }
-
-    .gallery-item:hover {
-        height: 200px;
-    }
-
-    .gallery-title {
-        left: 15px;
-        right: 15px;
-        bottom: 15px;
-        font-size: 16px;
-    }
-
-    .lightbox {
-        padding: 15px;
-    }
-
-    .lightbox-arrow {
-        width: 45px;
-        height: 45px;
-        font-size: 22px;
-    }
-
-    .lightbox-prev {
-        left: 10px;
-    }
-
-    .lightbox-next {
-        right: 10px;
-    }
-
-        .music-preview {
-        padding: 20px;
-        gap: 15px;
-    }
-
-    .music-play {
-        width: 50px;
-        height: 50px;
-    }
-
-    .music-name {
-        font-size: 18px;
-    }
-
-    .music-description {
-        font-size: 12px;
-    }
-
-    .music-type {
-        display: none;
-    }
-}
-
-
-/* multi image sets */
-
-.set-preview {
-    width: 100%;
-    height: 100%;
-}
-
-.set-preview img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: opacity 0.5s ease;
-}
-
-
-/* gallery set controls */
 
 .lightbox-arrow {
     position: absolute;
@@ -669,6 +608,7 @@ body {
     z-index: 102;
     transition:
         background 0.2s ease,
+        color 0.2s ease,
         transform 0.2s ease;
 }
 
@@ -699,35 +639,134 @@ body {
     letter-spacing: 2px;
 }
 
-.lightbox-inner {
-    max-width: 95vw;
-    max-height: 90vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 
-.lightbox-description {
-    max-width: 800px;
-    margin-top: 20px;
-    color: #aaa;
-    font-size: 16px;
-    text-align: center;
-    line-height: 1.6;
-}
+/* mobile layout */
 
-.lightbox-content {
-    max-width: 95vw;
-    max-height: 75vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+@media (max-width: 700px) {
 
-.lightbox-content img,
-.lightbox-content video {
-    max-width: 95vw;
-    max-height: 75vh;
-    object-fit: contain;
+    nav {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    nav div {
+        gap: 15px;
+    }
+
+    section {
+        padding: 80px 0;
+    }
+
+    .project {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    section > h2 {
+        font-size: 40px;
+    }
+
+    #about h2,
+    #contact h2 {
+        font-size: 40px;
+    }
+
+    .work-page {
+        padding: 60px 15px;
+    }
+
+    .work-page h2 {
+        font-size: 40px;
+    }
+
+    .gallery-item {
+        height: 180px;
+    }
+
+    .gallery-item:hover {
+        height: 200px;
+    }
+
+    .gallery-title {
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        font-size: 16px;
+    }
+
+    .gallery-title span:last-child {
+        font-size: 10px;
+    }
+
+    .music-preview {
+        padding: 20px;
+        gap: 15px;
+    }
+
+    .music-play {
+        width: 50px;
+        height: 50px;
+        font-size: 16px;
+    }
+
+    .music-name {
+        font-size: 16px;
+    }
+
+    .music-description {
+        font-size: 12px;
+    }
+
+    .music-type {
+        display: none;
+    }
+
+    .lightbox {
+        padding: 15px;
+    }
+
+    .lightbox-inner {
+        max-width: 100%;
+    }
+
+    .lightbox-content {
+        max-width: 100%;
+        max-height: 70vh;
+    }
+
+    .lightbox-content img,
+    .lightbox-content video {
+        max-width: 90vw;
+        max-height: 70vh;
+    }
+
+    .lightbox-content audio {
+        width: 85vw;
+    }
+
+    .lightbox-description {
+        max-width: 90vw;
+        font-size: 14px;
+        margin-top: 15px;
+    }
+
+    .lightbox-arrow {
+        width: 45px;
+        height: 45px;
+        font-size: 22px;
+    }
+
+    .lightbox-prev {
+        left: 10px;
+    }
+
+    .lightbox-next {
+        right: 10px;
+    }
+
+    .lightbox-close {
+        top: 10px;
+        right: 15px;
+        font-size: 35px;
+    }
 }

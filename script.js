@@ -28,9 +28,12 @@ const galleryItems = document.querySelectorAll(".gallery-item");
 // hover to play videos
 
 galleryItems.forEach((item) => {
+
     const video = item.querySelector("video");
 
-    if (!video) return;
+    if (!video) {
+        return;
+    }
 
     item.addEventListener("mouseenter", () => {
         video.play();
@@ -40,6 +43,7 @@ galleryItems.forEach((item) => {
         video.pause();
         video.currentTime = 0;
     });
+
 });
 
 
@@ -47,12 +51,14 @@ galleryItems.forEach((item) => {
 
 const lightbox = document.getElementById("lightbox");
 const lightboxContent = document.getElementById("lightboxContent");
-const lightboxDescription = document.getElementById("lightboxDescription");
 const lightboxClose = document.getElementById("lightboxClose");
 
 const lightboxPrev = document.getElementById("lightboxPrev");
 const lightboxNext = document.getElementById("lightboxNext");
 const lightboxCounter = document.getElementById("lightboxCounter");
+
+const lightboxDescription =
+    document.getElementById("lightboxDescription");
 
 
 // photo set state
@@ -61,21 +67,43 @@ let currentSetImages = [];
 let currentSetIndex = 0;
 
 
+// hide photo set controls when page loads
+
+if (lightboxPrev) {
+    lightboxPrev.style.display = "none";
+}
+
+if (lightboxNext) {
+    lightboxNext.style.display = "none";
+}
+
+if (lightboxCounter) {
+    lightboxCounter.style.display = "none";
+}
+
+
 // open gallery items
 
 galleryItems.forEach((item) => {
+
     item.addEventListener("click", () => {
 
         const type = item.dataset.type;
 
         lightboxContent.innerHTML = "";
-        lightboxDescription.textContent = item.dataset.description || "";
+
+        lightboxDescription.textContent =
+            item.dataset.description || "";
+
 
         // photo set
 
         if (type === "photo-set") {
 
-            currentSetImages = JSON.parse(item.dataset.images);
+            currentSetImages = JSON.parse(
+                item.dataset.images
+            );
+
             currentSetIndex = 0;
 
             lightboxPrev.style.display = "block";
@@ -84,6 +112,9 @@ galleryItems.forEach((item) => {
 
             showSetImage();
         }
+
+
+        // audio
 
         else if (type === "audio") {
 
@@ -100,9 +131,11 @@ galleryItems.forEach((item) => {
             audio.src = item.dataset.src;
             audio.controls = true;
             audio.autoplay = true;
+            audio.preload = "metadata";
 
             lightboxContent.appendChild(audio);
         }
+
 
         // video
 
@@ -144,7 +177,7 @@ galleryItems.forEach((item) => {
             const image = document.createElement("img");
 
             image.src = item.dataset.src;
-            image.alt = item.dataset.title;
+            image.alt = item.dataset.title || "Portfolio image";
 
             lightboxContent.appendChild(image);
         }
@@ -154,12 +187,17 @@ galleryItems.forEach((item) => {
 
         document.body.style.overflow = "hidden";
     });
+
 });
 
 
 // show photo set image
 
 function showSetImage() {
+
+    if (currentSetImages.length === 0) {
+        return;
+    }
 
     lightboxContent.innerHTML = "";
 
@@ -184,6 +222,7 @@ function closeLightbox() {
     lightbox.classList.remove("active");
 
     lightboxContent.innerHTML = "";
+
     lightboxDescription.textContent = "";
 
     currentSetImages = [];
@@ -226,7 +265,8 @@ lightboxPrev.addEventListener("click", (event) => {
     currentSetIndex--;
 
     if (currentSetIndex < 0) {
-        currentSetIndex = currentSetImages.length - 1;
+        currentSetIndex =
+            currentSetImages.length - 1;
     }
 
     showSetImage();
@@ -302,8 +342,12 @@ const photoSets = document.querySelectorAll(".photo-set");
 
 photoSets.forEach((set) => {
 
-    const images = JSON.parse(set.dataset.images);
-    const preview = set.querySelector(".set-preview img");
+    const images = JSON.parse(
+        set.dataset.images
+    );
+
+    const preview =
+        set.querySelector(".set-preview img");
 
     let currentImage = 0;
     let slideshow;
@@ -312,8 +356,11 @@ photoSets.forEach((set) => {
     // preload photo set images
 
     images.forEach((src) => {
+
         const img = new Image();
+
         img.src = src;
+
     });
 
 
@@ -370,9 +417,11 @@ photoSets.forEach((set) => {
 
 });
 
+
 // work filters
 
-const filterButtons = document.querySelectorAll(".filter-button");
+const filterButtons =
+    document.querySelectorAll(".filter-button");
 
 let activeFilters = [];
 
@@ -394,7 +443,6 @@ filterButtons.forEach((button) => {
             });
 
             button.classList.add("active");
-
         }
 
 
@@ -402,23 +450,23 @@ filterButtons.forEach((button) => {
 
         else {
 
-            // remove all button from active state
-
-            const allButton = document.querySelector(
-                '.filter-button[data-filter="all"]'
-            );
+            const allButton =
+                document.querySelector(
+                    '.filter-button[data-filter="all"]'
+                );
 
             allButton.classList.remove("active");
 
 
             if (activeFilters.includes(filter)) {
 
-                activeFilters = activeFilters.filter(
-                    (activeFilter) => activeFilter !== filter
-                );
+                activeFilters =
+                    activeFilters.filter(
+                        (activeFilter) =>
+                            activeFilter !== filter
+                    );
 
                 button.classList.remove("active");
-
             }
 
             else {
@@ -426,7 +474,6 @@ filterButtons.forEach((button) => {
                 activeFilters.push(filter);
 
                 button.classList.add("active");
-
             }
 
 
@@ -462,9 +509,11 @@ filterButtons.forEach((button) => {
 
             // item must have every selected tag
 
-            const matches = activeFilters.every(
-                (filter) => tags.includes(filter)
-            );
+            const matches =
+                activeFilters.every(
+                    (filter) =>
+                        tags.includes(filter)
+                );
 
 
             if (matches) {
