@@ -85,6 +85,24 @@ galleryItems.forEach((item) => {
             showSetImage();
         }
 
+        else if (type === "audio") {
+
+            currentSetImages = [];
+            currentSetIndex = 0;
+
+            lightboxPrev.style.display = "none";
+            lightboxNext.style.display = "none";
+            lightboxCounter.style.display = "none";
+
+
+            const audio = document.createElement("audio");
+
+            audio.src = item.dataset.src;
+            audio.controls = true;
+            audio.autoplay = true;
+
+            lightboxContent.appendChild(audio);
+        }
 
         // video
 
