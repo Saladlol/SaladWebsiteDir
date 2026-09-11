@@ -161,7 +161,39 @@ galleryItems.forEach((item) => {
             lightboxContent.appendChild(video);
         }
 
+        // youtube
 
+        // youtube
+
+        else if (type === "youtube") {
+
+            currentSetImages = [];
+            currentSetIndex = 0;
+
+            lightboxPrev.style.display = "none";
+            lightboxNext.style.display = "none";
+            lightboxCounter.style.display = "none";
+
+
+            const iframe = document.createElement("iframe");
+
+            iframe.src =
+                `https://www.youtube-nocookie.com/embed/${item.dataset.videoId}`;
+
+            iframe.title =
+                item.dataset.title || "YouTube video";
+
+            iframe.allow =
+                "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+
+            iframe.allowFullscreen = true;
+
+            iframe.referrerPolicy =
+                "strict-origin-when-cross-origin";
+
+            lightboxContent.appendChild(iframe);
+        }
+    
         // normal image
 
         else {
@@ -529,3 +561,4 @@ filterButtons.forEach((button) => {
     });
 
 });
+
